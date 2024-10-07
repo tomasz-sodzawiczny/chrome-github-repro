@@ -21,8 +21,6 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:
-          chrome-version: 128
-      - name: Test
-        run: |
-          npx testcafe --list-browsers
-          npx testcafe 'chrome:${{ steps.setup-chrome.outputs.chrome-path }}:headless --disable-setuid-sandbox --window-size=1920x1080' --concurrency 7 index.js
+          chrome-version: stable
+      - name: Testcade
+        run: npx testcafe 'chrome:${{ steps.setup-chrome.outputs.chrome-path }}:headless --window-size=1920x1080' index.js

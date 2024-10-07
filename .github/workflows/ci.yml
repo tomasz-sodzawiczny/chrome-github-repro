@@ -18,7 +18,11 @@ jobs:
           node-version: 20.11.0
       - name: Install deps
         run: npm install
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+        with:
+          chrome-version: 127
       - name: Test
         run: |
           npx testcafe --list-browsers
-          npx testcafe 'chrome:headless --disable-setuid-sandbox --window-size=1920x1080' --concurrency 7 index.js
+          npx testcafe 'chrome:${{ steps.setup-chrome.outputs.chrome-path }}:headless --disable-setuid-sandbox --window-size=1920x1080' --concurrency 7 index.js

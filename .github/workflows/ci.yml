@@ -21,7 +21,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:
-          chrome-version: 129
+          chrome-version: 128
       - name: Test
         run: |
           npx testcafe --list-browsers

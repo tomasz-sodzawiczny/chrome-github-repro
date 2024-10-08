@@ -21,6 +21,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:
-          chrome-version: stable
+          # or 'stable'
+          chrome-version: 127
       - name: Testcade
-        run: npx testcafe 'chrome:${{ steps.setup-chrome.outputs.chrome-path }}:headless --window-size=1920x1080' index.js
+        run: npx testcafe 'chrome:${{ steps.setup-chrome.outputs.chrome-path }} --window-size=1920x1080' index.js
